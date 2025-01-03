@@ -1,0 +1,14 @@
+
+services:
+  app:
+    build: .
+    volumes:
+      - ./output.txt:/app/output.txt
+    user: "1000:1000"  # Usuario común de Linux
+    environment:
+      - PYTHONUNBUFFERED=1  # Asegura que los logs sean inmediatos
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3" 
